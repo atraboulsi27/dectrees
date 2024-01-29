@@ -1,0 +1,103 @@
+Assignment 0: Each one of the datasets has properties which makes
+them hard to learn. Motivate which of the three problems is most
+difficult for a decision tree algorithm to learn.
+
+
+Answer 0: The hardest dataset to learn would be the one with the most combinations and questions that are needed 
+to clarify the classification. Therefore, in that case Monk 2 would be the hardest to learn, because unlike the others 
+where there are clearer conditions, Monk2 satisfy more combinations and therefore have more conditions to work with.
+
+Assignment 1: The file dtree.py defines a function entropy which
+calculates the entropy of a dataset. Import this file along with the
+monks datasets and use it to calculate the entropy of the training
+datasets.
+
+Answer 1:
+The entropy of monk1 is: 1.0
+The entropy of monk2 is: 0.957117428264771
+The entropy of monk3 is: 0.9998061328047111
+
+Assignment 2: Explain entropy for a uniform distribution and a
+non-uniform distribution, present some example distributions with
+high and low entropy.
+
+Answer 2: Entropy is the measure of unpredictibility of a dataset.
+A uniform distribution would have a spread unpredictibility with each outcome having equal probability, thus it would have a higher entropy measurement, than
+a non-uniform distribution.
+A good comparison is comparing the entropy of a uniform dataset like a die, with each
+face having an equal probability of 0.1, resulting in an entropy of 2.58, with the entropy
+of a non-uniform dataset like a fake die, which is the same as the previous one but one of the sides has a 0.5 probability,
+thus adding non-uniformity and resulting in a lower entropy of 2.16, since now it has more predictibility skewing towards the outcome with the greater probability.
+
+Assignment 3: Use the function averageGain (defined in dtree.py)
+to calculate the expected information gain corresponding to each of
+the six attributes. Note that the attributes are represented as instances of the class Attribute (defined in monkdata.py) which you
+can access via m.attributes[0], ..., m.attributes[5]. Based on
+the results, which attribute should be used for splitting the examples
+at the root node?
+
+Answer 3:
+The information gain in monk1 by A1 is: 0.07527255560831925
+The information gain in monk1 by A2 is: 0.005838429962909286
+The information gain in monk1 by A3 is: 0.00470756661729721
+The information gain in monk1 by A4 is: 0.02631169650768228
+The information gain in monk1 by A5 is: 0.28703074971578435
+The information gain in monk1 by A6 is: 0.0007578557158638421
+
+For monk1, max information gain is by A5, therefore that should be used for the split.
+
+The information gain in monk2 by A1 is: 0.0037561773775118823
+The information gain in monk2 by A2 is: 0.0024584986660830532
+The information gain in monk2 by A3 is: 0.0010561477158920196
+The information gain in monk2 by A4 is: 0.015664247292643818
+The information gain in monk2 by A5 is: 0.01727717693791797
+The information gain in monk2 by A6 is: 0.006247622236881467
+
+For monk2, max information gain is by A5, therefore that should be used for the split.
+
+The information gain in monk3 by A1 is: 0.007120868396071844
+The information gain in monk3 by A2 is: 0.29373617350838865
+The information gain in monk3 by A3 is: 0.0008311140445336207
+The information gain in monk3 by A4 is: 0.002891817288654397
+The information gain in monk3 by A5 is: 0.25591172461972755
+The information gain in monk3 by A6 is: 0.007077026074097326
+
+For monk3, max information gain is by A2, therefore that should be used for the split.
+
+
+Assignment 4: For splitting we choose the attribute that maximizes
+the information gain, Eq.3. Looking at Eq.3 how does the entropy of
+the subsets, Sk, look like when the information gain is maximized?
+How can we motivate using the information gain as a heuristic for
+picking an attribute for splitting? Think about reduction in entropy
+after the split and what the entropy implies.
+
+Answer 4: The entropy would be minimized in case the information gain is maximized. Since entropy indicates a unit of unpredictibility,
+we want to minimize that in order to have effective decision trees. Using information gain for that purpose is logical since as information gain
+increases the entropy is minimized, thus using the highest gain attribute is the correct approach.
+
+Assignment 5: Build the full decision trees for all three Monk
+datasets using buildTree. Then, use the function check to measure the performance of the decision tree on both the training and
+test datasets.
+For example to built a tree for monk1 and compute the performance
+on the test data you could use
+import monkdata as m
+import dtree as d
+t=d.buildTree(m.monk1, m.attributes);
+print(d.check(t, m.monk1test))
+Compute the train and test set errors for the three Monk datasets
+for the full trees. Were your assumptions about the datasets correct?
+Explain the results you get for the training and test datasets.
+
+Answer 5: The correctness of monk1 training 1.0, Error = 0
+The correctness of monk1 test 0.8287037037037037, Error = 0.18
+The correctness of monk2 training 1.0, Error = 0
+The correctness of monk2 test 0.6921296296296297, Error = 0.31
+The correctness of monk3 training 1.0, Error = 0
+The correctness of monk3 test 0.9444444444444444, Error = 0.16
+
+Explanation: The error difference between test and training shows that through
+decision tree that is trained on the training samples learn those samples. The correctness
+score decreases on the test samples since they present samples they haven't fully learned.
+
+

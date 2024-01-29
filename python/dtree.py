@@ -118,7 +118,7 @@ def check(tree, testdata):
     for x in testdata:
         if classify(tree, x) == x.positive:
             correct += 1
-    return float(correct)/len(testdata)
+    return 1 - float(correct)/len(testdata)
 
 
 def allPruned(tree):
